@@ -11,6 +11,18 @@ def contacto(request):
 def cartelera(request):
     return render(request,'aplicacion/cartelera.html')
 
+def juego1(request):
+    return render(request,'aplicacion/juego1.html')
+
+def juego2(request):
+    return render(request,'aplicacion/juego2.html')
+
+def juego3(request):
+    return render(request,'aplicacion/juego3.html')
+
+def juego4(request):
+    return render(request,'aplicacion/juego4.html')
+
 def juego5(request):
     return render(request,'aplicacion/juego5.html')
 
@@ -22,8 +34,3 @@ def juego7(request):
 
 def juego8(request):
     return render(request,'aplicacion/juego8.html')
-
-
-
-
-
