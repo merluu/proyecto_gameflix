@@ -22,3 +22,15 @@ def juego3(request):
 
 def juego4(request):
     return render(request,'aplicacion/juego4.html')
+
+def juego5(request):
+    return render(request,'aplicacion/juego5.html')
+
+def juego6(request):
+    return render(request,'aplicacion/juego6.html')
+
+def juego7(request):
+    return render(request,'aplicacion/juego7.html')
+
+def juego8(request):
+    return render(request,'aplicacion/juego8.html')
