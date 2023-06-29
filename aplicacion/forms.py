@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Juego
+from .models import Cliente
 
 class JuegoForm(ModelForm):
     id = forms.CharField(widget=forms.TextInput)
@@ -27,3 +28,7 @@ class JuegoForm(ModelForm):
         return precio
     
     
+class ClienteForm (ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ['rut','pnombre','snombre','papellido','sapellido','fecha_nacimiento','email']
