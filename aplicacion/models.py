@@ -23,9 +23,8 @@ class Cliente(models.Model):
     email=models.CharField(max_length=50, null=False)
     usrdjango=models.OneToOneField(User,unique=True,on_delete=models.CASCADE)
 
-def __str__(self):
-    texto = "{0} {1}"
-    return texto.format (self.pnombre, self.papellido )
+    def __str__(self):
+        return self.pnombre
 
 class Carrito(models.Model):
     id = models.AutoField(primary_key=True)
