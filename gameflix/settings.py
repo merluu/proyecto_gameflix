@@ -1,4 +1,3 @@
-import os
 """
 Django settings for gameflix project.
 
@@ -105,7 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
+#para que este en español el pandel del admin
 
 TIME_ZONE = 'UTC'
 
@@ -119,9 +119,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join (BASE_DIR , "media")
+
+
 #esto es lo que agregué cuando no me funcionaba enrutar el css en la cartelera
 #que me dijo chatgpt junto con arriba poner import os que no funcionó de nada. 
 

@@ -1,5 +1,10 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from .models import Cliente
+=======
+from .models import Juego
+
+>>>>>>> 2ffd14a80f0d3b7824c9bf5de20abe141b5433d4
 # Create your views here.
 
 def home(request):
@@ -10,6 +15,18 @@ def contacto(request):
 
 def cartelera(request):
     return render(request,'aplicacion/cartelera.html')
+
+def juego1(request):
+    return render(request,'aplicacion/juego1.html')
+
+def juego2(request):
+    return render(request,'aplicacion/juego2.html')
+
+def juego3(request):
+    return render(request,'aplicacion/juego3.html')
+
+def juego4(request):
+    return render(request,'aplicacion/juego4.html')
 
 def juego5(request):
     return render(request,'aplicacion/juego5.html')
@@ -23,6 +40,7 @@ def juego7(request):
 def juego8(request):
     return render(request,'aplicacion/juego8.html')
 
+<<<<<<< HEAD
 def listaCliente(request):
     clientes = Cliente.objects.all()
     data = {
@@ -34,3 +52,11 @@ def listaCliente(request):
 
 
 
+=======
+def juego_inicio(request):
+    juegos = Juego.objects.all()
+    data = {
+        'juegos': juegos
+    }
+    return render(request,'aplicacion/juego_inicio.html',data)
+>>>>>>> 2ffd14a80f0d3b7824c9bf5de20abe141b5433d4
