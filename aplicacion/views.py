@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Cliente
 from .models import Juego
+from .forms import JuegoForm
 # Create your views here.
 
 def home(request):
@@ -38,14 +39,11 @@ def juego8(request):
 
 
 
-def listaCliente(request):
-    clientes = Cliente.objects.all()
+def nuevo_juego(request):
     data = {
-        'clientes': clientes
+        'form' : JuegoForm() 
     }
-    return render(request,'aplicacion/listaCliente.html',data)
-
-
+    return render(request,'aplicacion/nuevo_juego.html',data)
 
 def juego_inicio(request):
     juegos = Juego.objects.all()
@@ -54,9 +52,9 @@ def juego_inicio(request):
     }
     return render(request,'aplicacion/juego_inicio.html',data)
 
-def listado_cliente (request):
+def listado_clientes (request):
     clientes = Cliente.objects.all()
     data = {
         'clientes' : clientes
     }
-    return render(request,'aplicacion/listado_cliente.html',data)
+    return render(request,'aplicacion/listado_clientes.html',data)
