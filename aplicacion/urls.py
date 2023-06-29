@@ -19,5 +19,4 @@ urlpatterns = [
     
     path('juego_inicio/', juego_inicio,name="juego_inicio" ),
 
-
 ]
