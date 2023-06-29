@@ -54,4 +54,9 @@ def juego_inicio(request):
     }
     return render(request,'aplicacion/juego_inicio.html',data)
 
-
+def listado_cliente (request):
+    clientes = Cliente.objects.all()
+    data = {
+        'clientes' : clientes
+    }
+    return render(request,'aplicacion/listado_cliente.html',data)
