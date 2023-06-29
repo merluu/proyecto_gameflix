@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Juego
 from .models import Contacto
+from .models import opciones_consultas
 
 class JuegoForm(ModelForm):
     id = forms.CharField(widget=forms.TextInput)
@@ -31,7 +32,7 @@ class JuegoForm(ModelForm):
 class ContactoForm(forms.ModelForm):
     nombre = forms.CharField(widget=forms.TextInput)
     correo = forms.CharField(widget=forms.TextInput)
-    tipo_consulta = forms.CharField(widget=forms.TextInput)
+    tipo_consulta = forms.ChoiceField(choices=opciones_consultas, widget=forms.Select(attrs={'class': 'form-control'}))
     mensaje = forms.CharField(widget=forms.TextInput)
 
     class Meta:
