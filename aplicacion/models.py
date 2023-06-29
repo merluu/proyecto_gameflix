@@ -8,6 +8,7 @@ class Juego(models.Model):
     precio = models.IntegerField(default=0)
     descripcion = models.TextField()
     fecha_creacion = models.DateField()
+    imagen = models.ImageField(upload_to="juegos", null=True) 
 
     def __str__(self):
         return self.nombre 
