@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Juego
+from .models import Contacto
 
 class JuegoForm(ModelForm):
     id = forms.CharField(widget=forms.TextInput)
@@ -26,4 +27,14 @@ class JuegoForm(ModelForm):
             raise forms.ValidationError("El precio tiene que ser mayor que 0")
         return precio
     
-    
+
+class ContactoForm(forms.ModelForm):
+    nombre = forms.CharField(widget=forms.TextInput)
+    correo = forms.CharField(widget=forms.TextInput)
+    tipo_consulta = forms.CharField(widget=forms.TextInput)
+    mensaje = forms.CharField(widget=forms.TextInput)
+
+    class Meta:
+        model = Contacto
+        #fields = ("nombre","correo","tipo_consulta","mensaje")
+        fields = '__all__' 
