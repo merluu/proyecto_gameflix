@@ -119,6 +119,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join (BASE_DIR , "media")
+
 
 #esto es lo que agregué cuando no me funcionaba enrutar el css en la cartelera
 #que me dijo chatgpt junto con arriba poner import os que no funcionó de nada. 
