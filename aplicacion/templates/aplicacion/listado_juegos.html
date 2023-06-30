@@ -14,28 +14,30 @@
 {% block contenido %}
 <hr>
 <div align="center">
-    <h2 style="color: white;">Lista de Clientes</h2>
+    <h2 style="color: white;">Lista de Juegos</h2>
 </div>
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>
-            <th>Rut</th>
+            <th>Id</th>
             <th>Nombre</th>
-            <th>Primer apellido</th>
-            <th>Fecha Ncto</th>
-            <th>Email</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Fecha Creacion</th>
+            <th>Imagen</th>
         </tr>
     </thead>
     <tbody>
-        {% for j in clientes %}
+        {% for j in juegos %}
             <tr>
-                <td>{{ j.rut }}</td>
-                <td>{{ j.pnombre }}</td>
-                <td>{{ j.papellido }}</td>
-                <td>{{ j.fecha_nacimiento }}</td>
-                <td>{{ j.email }}</td>
-                <td><a href="{% url 'modificar_cliente' j.rut %}">Modificar</a></td>
-                <td><a href="{% url 'eliminar_cliente' j.rut %}">Eliminar</a></td>
+                <td>{{ j.id }}</td>
+                <td>{{ j.nombre }}</td>
+                <td>{{ j.precio }}</td>
+                <td>{{ j.descripcion }}</td>
+                <td>{{ j.fecha_creacion }}</td>
+    
+                <td><a href="{% url 'modificar_juego' j.id %}">Modificar</a></td>
+                <td><a href="{% url 'eliminar_juego' j.id %}">Eliminar</a></td>
             </tr>
         {% endfor %}
     </tbody>
