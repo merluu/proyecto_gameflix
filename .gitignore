@@ -1,4 +1,8 @@
 db.sqlite3
-_pycache_/
-aplicacion/_pycache_/
+__pycache__/
+aplicacion/__pycache__/
+aplicacion/migrations/
+migrations/
+aplicacion/migrations/*.py
+migrations/*.py
 *.pyc
