@@ -70,7 +70,6 @@ def nuevo_juego(request):
     return render(request, 'aplicacion/nuevo_juego.html', data)
 
 
-
 def contacto(request):
     data = {
         'form': ContactoForm()
@@ -106,14 +105,14 @@ def nuevo_cliente(request):
         'form': ClienteForm()
     }
 
-    if request.method=='POST':
+    if request.method == 'POST':
         formulario = ClienteForm(request.POST)
         if formulario.is_valid():
             formulario.save()
             data['mensaje'] = "Guardado con exito"
         else:
             print(formulario.errors)
-            
+
     return render(request, 'aplicacion/nuevo_cliente.html', data)
 
 
@@ -140,10 +139,7 @@ def eliminar_cliente(request, rut):
     return redirect(to="listado_clientes")
 
 
-
-
-
-## LISTA DE JUEGOS
+# LISTA DE JUEGOS
 
 def listado_juegos(request):
     juegos = Juego.objects.all()
@@ -167,23 +163,25 @@ def modificar_juego(request, id):
             data['form'] = formulario
     return render(request, 'aplicacion/modificar_juego.html', data)
 
+
 def eliminar_juego(request, id):
     juego = Juego.objects.get(id=id)
     juego.delete()
 
     return redirect(to="listado_juegos")
 
+
 def nuevoo_juegoo(request):
     data = {
         'form': JuegoForm()
     }
 
-    if request.method=='POST':
+    if request.method == 'POST':
         formulario = JuegoForm(request.POST)
         if formulario.is_valid():
             formulario.save()
             data['mensaje'] = "Guardado con exito"
-        else:
-            print(formulario.errors)
-            
-    return render(request, 'aplicacion/nuevoo_juegoo.html', data)
+
+    return render(request,'aplicacion/nuevoo_juegoo.html', data)
+
+

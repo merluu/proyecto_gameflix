@@ -35,7 +35,7 @@
                 <td>{{ j.precio }}</td>
                 <td>{{ j.descripcion }}</td>
                 <td>{{ j.fecha_creacion }}</td>
-                <td><img src="{{ j.imagen.url }}" alt="Imagen del juego" style="width: 100px; height: auto;"></td>
+    
                 <td><a href="{% url 'modificar_juego' j.id %}">Modificar</a></td>
                 <td><a href="{% url 'eliminar_juego' j.id %}">Eliminar</a></td>
             </tr>
