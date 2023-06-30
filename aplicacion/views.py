@@ -1,10 +1,13 @@
 from django.shortcuts import render , redirect
 from .models import Cliente
 from .models import Juego
-from .forms import JuegoForm
-from .forms import CustomUserForm
+from .forms import JuegoForm, CustomUserForm
 from .forms import ContactoForm
 from .forms import  ClienteForm
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth import authenticate
+
+
 # Create your views here.
 
 def home(request):
@@ -42,13 +45,24 @@ def juego8(request):
 
 def register(request):
     data = {
-        'form' : CustomUserForm()
+        'form':CustomUserForm()
     }
-    return render(request,'registration/register.html',data)
+    if request.method == 'POST':
+        formulario = CustomUserForm(request.POST)
+        if formulario.is_valid():
+            formulario.save();
+            username = formulario.cleaned_data['username']
+            password = formulario.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            login(request,user)
+            return redirect(to='home')
+        
+    return render(request,"registration/register.html",data)
 
 def login(request):
     return render(request,'aplicacion/login.html')
 
+@permission_required('core.add_juego')
 def nuevo_juego(request):
     data = {
         'form' : JuegoForm() 

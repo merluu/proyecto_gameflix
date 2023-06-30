@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 from.views import home,contacto,cartelera, juego1, juego2, juego3, juego4, juego5,juego6,juego7,juego8, nuevo_juego, juego_inicio,indexadmin ,listado_clientes,modificar_cliente,eliminar_cliente, register, login
 
