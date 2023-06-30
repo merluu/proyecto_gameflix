@@ -54,3 +54,10 @@ class ClienteForm(ModelForm):
         fields = ['rut','pnombre','snombre','papellido','sapellido','fecha_nacimiento','email','usrdjango']
         
 
+##juegos crud
+class JuegoForm(ModelForm):
+
+    class Meta:
+        model = Juego
+        fields = ['id', 'nombre', 'precio', 'descripcion', 'fecha_creacion','imagen']
+

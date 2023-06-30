@@ -1,0 +1,45 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'aplicacion/css/cartelera.css' %}">
+<link rel="stylesheet" href="{% static 'aplicacion/css/cliente-inicio.css' %}">
+<style>
+    table, th, td {
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block contenido %}
+<hr>
+<div align="center">
+    <h2 style="color: white;">Lista de Juegos</h2>
+</div>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Fecha Creacion</th>
+            <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for j in juegos %}
+            <tr>
+                <td>{{ j.id }}</td>
+                <td>{{ j.nombre }}</td>
+                <td>{{ j.precio }}</td>
+                <td>{{ j.descripcion }}</td>
+                <td>{{ j.fecha_creacion }}</td>
+                <td><img src="{{ j.imagen.url }}" alt="Imagen del juego" style="width: 100px; height: auto;"></td>
+                <td><a href="{% url 'modificar_juego' j.id %}">Modificar</a></td>
+                <td><a href="{% url 'eliminar_juego' j.id %}">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

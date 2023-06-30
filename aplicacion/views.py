@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Cliente
 from .models import Juego
-from .forms import JuegoForm
 from .forms import CustomUserForm
 from .forms import ContactoForm
 from .forms import ClienteForm
+from .forms import JuegoForm
 # Create your views here.
 
 
@@ -69,13 +69,6 @@ def nuevo_juego(request):
     }
     return render(request, 'aplicacion/nuevo_juego.html', data)
 
-
-def juego_inicio(request):
-    juegos = Juego.objects.all()
-    data = {
-        'juegos': juegos
-    }
-    return render(request, 'aplicacion/juego_inicio.html', data)
 
 
 def contacto(request):
@@ -145,3 +138,52 @@ def eliminar_cliente(request, rut):
     cliente.delete()
 
     return redirect(to="listado_clientes")
+
+
+
+
+
+## LISTA DE JUEGOS
+
+def listado_juegos(request):
+    juegos = Juego.objects.all()
+    data = {
+        'juegos': juegos
+    }
+    return render(request, 'aplicacion/listado_juegos.html', data)
+
+
+def modificar_juego(request, id):
+    juego = Juego.objects.get(id=id)
+    data = {
+        'form': JuegoForm(instance=juego)
+    }
+
+    if request.method == 'POST':
+        formulario = JuegoForm(data=request.POST, instance=juego)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "juego modificado correctamente "
+            data['form'] = formulario
+    return render(request, 'aplicacion/modificar_juego.html', data)
+
+def eliminar_juego(request, id):
+    juego = Juego.objects.get(id=id)
+    juego.delete()
+
+    return redirect(to="listado_juegos")
+
+def nuevoo_juegoo(request):
+    data = {
+        'form': JuegoForm()
+    }
+
+    if request.method=='POST':
+        formulario = JuegoForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Guardado con exito"
+        else:
+            print(formulario.errors)
+            
+    return render(request, 'aplicacion/nuevoo_juegoo.html', data)
