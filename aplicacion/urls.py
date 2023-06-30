@@ -1,5 +1,17 @@
 from django.urls import path
-from.views import home,contacto,cartelera, juego1, juego2, juego3, juego4, juego5,juego6,juego7,juego8, nuevo_juego, juego_inicio,listado_clientes,nuevo_clientes
+from.views import (home,
+contacto,
+cartelera, 
+juego1, 
+juego2, 
+juego3, 
+juego4, 
+juego5,
+juego6,
+juego7,
+juego8,
+nuevo_juego,
+juego_inicio,listado_clientes,modificar_cliente,eliminar_cliente)
 
 urlpatterns = [
     path('', home,name="home" ),
@@ -20,6 +32,10 @@ urlpatterns = [
     path ('listado-clientes/',listado_clientes,name ="listado_clientes"),
 
     path('nuevo-juego/', nuevo_juego,name="nuevo_juego"),
+
+    #path('nuevo-cliente/',nuevo_cliente,name="nuevo_cliente"),
     
-    path('nuevo-clientes/', nuevo_clientes , name = "nuevo_clientes"),
+    path('modificar-cliente/<rut>/',modificar_cliente,name="modificar_cliente"),
+
+    path('eliminar-cliente/<rut>/',eliminar_cliente,name="eliminar_cliente"),
 ]

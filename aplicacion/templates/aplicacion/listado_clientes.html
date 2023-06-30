@@ -30,8 +30,12 @@
                 <td>{{ j.papellido }}</td>
                 <td>{{ j.fecha_nacimiento }}</td>
                 <td>{{ j.email }}</td>
+                <td><a href="{% url 'modificar_cliente' j.rut %}">Modificar</a></td>
+                <td><a href="{% url 'eliminar_cliente' j.rut %}">Eliminar</a></td>
+                
             </tr>
         {% endfor %}
+
     </tbody>
 </table>
 {% endblock %}
