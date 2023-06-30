@@ -1,0 +1,42 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static '/aplicacion/css/cartelera.css' %}">
+<link rel="stylesheet" href="{% static '/aplicacion/css/cliente-inicio.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<hr>
+<div align="center">
+    <h2 style="color: white;">Lista de Clientes</h2>
+</div>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Rut</th>
+            <th>Nombre</th>
+            <th>Primer apellido</th>
+            <th>Fecha Ncto</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for j in clientes %}
+            <tr>
+                <td>{{ j.rut }}</td>
+                <td>{{ j.pnombre }}</td>
+                <td>{{ j.papellido }}</td>
+                <td>{{ j.fecha_nacimiento }}</td>
+                <td>{{ j.email }}</td>
+                <td><a href="{% url 'modificar_cliente' j.rut %}">Modificar</a></td>
+                <td><a href="{% url 'eliminar_cliente' j.rut %}">Eliminar</a></td>
+                
+            </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
+

@@ -11,4 +11,3 @@ admin.site.register(DetalleCarrito)
 admin.site.register(Venta)
 admin.site.register(Contacto)
 
-
