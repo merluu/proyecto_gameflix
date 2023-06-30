@@ -2,6 +2,7 @@ from django.shortcuts import render , redirect
 from .models import Cliente
 from .models import Juego
 from .forms import JuegoForm
+from .forms import CustomUserForm
 from .forms import ContactoForm
 from .forms import  ClienteForm
 # Create your views here.
@@ -39,7 +40,14 @@ def juego7(request):
 def juego8(request):
     return render(request,'aplicacion/juego8.html')
 
+def register(request):
+    data = {
+        'form' : CustomUserForm()
+    }
+    return render(request,'registration/register.html',data)
 
+def login(request):
+    return render(request,'aplicacion/login.html')
 
 def nuevo_juego(request):
     data = {
@@ -86,7 +94,6 @@ def modificar_cliente(request, rut):
     cliente = Cliente.objects.get(rut=rut)
     data= {
         'form' :ClienteForm(instance=cliente)
-
     }
 
     if request.method == 'POST':

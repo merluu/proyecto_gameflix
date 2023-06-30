@@ -1,11 +1,16 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Juego
+<<<<<<< HEAD
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+=======
 from .models import Contacto
 from .models import opciones_consultas
 from .models import Cliente
 from django.contrib.auth.models import User
 
+>>>>>>> 95ba730fb145eca66d1ed98b93aab463c0bc95ce
 
 class JuegoForm(ModelForm):
     id = forms.CharField(widget=forms.TextInput)
@@ -20,17 +25,23 @@ class JuegoForm(ModelForm):
 
     def val_nombre(self):
         nombre = self.cleaned_data.get('nombre')
-        if len(nombre)<4:
+        if len(nombre) < 4:
             raise forms.ValidationError("El nombre debe tener al menos 4 caracteres")
         return nombre
     
-
     def va_precio(self):
-        precio =self.cleaned_data.get('precio')
-        if precio<=0:
+        precio = self.cleaned_data.get('precio')
+        if precio <= 0:
             raise forms.ValidationError("El precio tiene que ser mayor que 0")
         return precio
+
+class CustomUserForm(UserCreationForm):
     
+<<<<<<< HEAD
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+=======
 
 class ContactoForm(forms.ModelForm):
     nombre = forms.CharField(widget=forms.TextInput)
@@ -69,3 +80,4 @@ class ClienteForm(ModelForm):
             raise forms.ValidationError("El apellido debe tener al menos 4 caracteres")
         return papellido
 
+>>>>>>> 95ba730fb145eca66d1ed98b93aab463c0bc95ce
