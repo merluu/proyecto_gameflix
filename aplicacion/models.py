@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 class Juego(models.Model):
     id = models.AutoField(primary_key=True)
@@ -24,8 +23,8 @@ class Cliente(models.Model):
     email=models.CharField(max_length=50, null=False)
     usrdjango=models.OneToOneField(User,unique=True,on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.pnombre
+def __str__(self):
+        return self.pnombre 
 
 class Carrito(models.Model):
     id = models.AutoField(primary_key=True)
@@ -53,3 +52,19 @@ class Venta(models.Model):
 
     def __str__(self):
         return self.id_venta 
+
+opciones_consultas = [
+    [0 , "consulta"],
+    [1 , "reclamo"],
+    [2,"sugerencia"],
+    [3, "felicitaciones"]
+]
+
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=50)
+    correo = models.EmailField()
+    tipo_consulta = models.IntegerField(choices=opciones_consultas)
+    mensaje = models.TextField()
+
+    def __str__(self):
+        return self.nombre

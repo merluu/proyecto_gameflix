@@ -2,8 +2,9 @@ from django.shortcuts import render , redirect
 from .models import Cliente
 from .models import Juego
 from .forms import JuegoForm
+from .forms import CustomUserForm
+from .forms import ContactoForm
 from .forms import  ClienteForm
-
 # Create your views here.
 
 def home(request):
@@ -39,7 +40,14 @@ def juego7(request):
 def juego8(request):
     return render(request,'aplicacion/juego8.html')
 
+def register(request):
+    data = {
+        'form' : CustomUserForm()
+    }
+    return render(request,'registration/register.html',data)
 
+def login(request):
+    return render(request,'aplicacion/login.html')
 
 def nuevo_juego(request):
     data = {
@@ -53,6 +61,22 @@ def juego_inicio(request):
         'juegos': juegos
     }
     return render(request,'aplicacion/juego_inicio.html',data)
+
+def contacto(request):
+    data = {
+        'form': ContactoForm()
+    }
+    if request.method == 'POST':
+        formulario = ContactoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "contacto enviado"
+        else:
+            data["form"] = formulario
+    return render(request,'aplicacion/contacto.html',data)
+
+def indexadmin(request):
+    return render(request,'aplicacion/indexadmin.html')
 
 ##lista cliente##
 
@@ -70,7 +94,6 @@ def modificar_cliente(request, rut):
     cliente = Cliente.objects.get(rut=rut)
     data= {
         'form' :ClienteForm(instance=cliente)
-
     }
 
     if request.method == 'POST':
@@ -87,3 +110,4 @@ def eliminar_cliente(request, rut):
 
     return redirect(to="listado_clientes")
     
+

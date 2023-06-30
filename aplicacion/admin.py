@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Juego , Cliente , Carrito , DetalleCarrito , Venta 
+from .models import Juego , Cliente , Carrito , DetalleCarrito , Venta ,Contacto
 # Register your models here.
 
 class JuegoAdmin(admin.ModelAdmin):
@@ -9,4 +9,5 @@ admin.site.register(Cliente)
 admin.site.register(Carrito)
 admin.site.register(DetalleCarrito)
 admin.site.register(Venta)
+admin.site.register(Contacto)
 
