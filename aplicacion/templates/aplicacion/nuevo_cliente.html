@@ -1,109 +1,19 @@
 {% extends 'aplicacion/base.html' %}
 
-{% load static %}
-
-{% block css %}
-<style>
-    .container {
-        color: white; /* Cambia el color del texto a blanco */
-        width: 1000px; /* Ajusta el ancho del formulario */
-        margin: 0 auto; /* Centra el formulario horizontalmente */
-    }
-    
-    .container input[type="text"],
-    .container input[type="email"] {
-        background-color: white; /* Cambia el color de fondo de los campos de entrada a blanco */
-        color: black; /* Cambia el color del texto en los campos de entrada a negro */
-        width: 100%; /* Ajusta el ancho de los campos de entrada al 100% */
-        padding: 10px; /* Añade un espaciado interno a los campos de entrada */
-        margin-bottom: 10px; /* Añade un margen inferior a los campos de entrada */
-    }
-</style>
-{% endblock %}
-
-<link rel="stylesheet" type="text/css" href="{% static '/aplicacion/css/nuevo_juego.css' %}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 {% block contenido %}
-<div class="container">
-    <div class="side">
-        <h2>Nuevo Cliente</h2>
-        <h5></h5>
-        <br>
-        <br>
 
-        <form action="" method="POST">
-            {% csrf_token %}
-            <table>
-                <tr>
-                    <td>
-                        <label for="{{ form.rut.id_for_label }}" required class="field-label">{{ form.rut.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.rut }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="{{ form.pnombre.id_for_label }}" class="field-label">{{ form.pnombre.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.pnombre }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="{{ form.snombre.id_for_label }}" class="field-label">{{ form.snombre.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.snombre }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="{{ form.papellido.id_for_label }}" class="field-label">{{ form.papellido.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.papellido }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="{{ form.sapellido.id_for_label }}" class="field-label">{{ form.sapellido.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.sapellido }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="{{ form.fecha_nacimiento.id_for_label }}" class="field-label">{{ form.fecha_nacimiento.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.fecha_nacimiento }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="{{ form.email.id_for_label }}" class="field-label">{{ form.email.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.email }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="{{ form.usrdjango.id_for_label }}" class="field-label">{{ form.usrdjango.label }}</label>
-                    </td>
-                    <td>
-                        {{ form.usrdjango }}
-                    </td>
-                </tr>
-            </table>
-            <input type="reset" value="Limpiar">
-            <input type="submit" value="Guardar">
-        </form>
-    </div>
-</div>
+<h2>Ingresar Nuevo Cliente</h2>
+
+<form action="" method="POST">
+    {% csrf_token%}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="reset" value="Limpiar">
+    <input type="submit" value="Guardar">
+
+</form>
+
 {{ mensaje }}
-{% endblock %} 
+
+{% endblock %}
