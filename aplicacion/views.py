@@ -63,3 +63,6 @@ def contacto(request):
             data["form"] = formulario
     return render(request,'aplicacion/contacto.html',data)
 
+def indexadmin(request):
+    return render(request,'aplicacion/indexadmin.html')
+
