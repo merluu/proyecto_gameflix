@@ -1,10 +1,14 @@
 {% extends 'aplicacion/base.html' %}
 {% load static %}
 
-
-{% block css%}
-<link rel="stylesheet" type="text/css" href="{% static '/aplicacion/css/cartelera.css' %}">
-<link rel="stylesheet" href="{% static '/aplicacion/css/cliente-inicio.css' %}">
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'aplicacion/css/cartelera.css' %}">
+<link rel="stylesheet" href="{% static 'aplicacion/css/cliente-inicio.css' %}">
+<style>
+    table, th, td {
+        color: white;
+    }
+</style>
 {% endblock %}
 
 {% block contenido %}
@@ -32,11 +36,8 @@
                 <td>{{ j.email }}</td>
                 <td><a href="{% url 'modificar_cliente' j.rut %}">Modificar</a></td>
                 <td><a href="{% url 'eliminar_cliente' j.rut %}">Eliminar</a></td>
-                
             </tr>
         {% endfor %}
-
     </tbody>
 </table>
 {% endblock %}
-

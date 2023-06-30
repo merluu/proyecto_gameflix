@@ -1,16 +1,16 @@
 {% extends 'aplicacion/base.html' %}
 
 {% block contenido %}
-<h2>Modificar Cliente</h2>
+<h2 style="color: white;">Modificar Cliente</h2>
 
-<form action="" method="POST">
+<form action="" method="POST" style="color: white;">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
 
-    <input type="reset" value="Limpiar">
-    <input type="submit" value="Modificar">
+    <input type="reset" value="Limpiar" style="background-color: blue; color: white;">
+    <input type="submit" value="Modificar" style="background-color: green; color: white;">
 
 
 

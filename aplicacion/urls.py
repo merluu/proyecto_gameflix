@@ -1,5 +1,5 @@
 from django.urls import path
-from.views import home,contacto,cartelera, juego1, juego2, juego3, juego4, juego5,juego6,juego7,juego8, nuevo_juego, juego_inicio,indexadmin ,listado_clientes,modificar_cliente,eliminar_cliente, register, login
+from.views import home,contacto,cartelera, juego1, juego2, juego3, juego4, juego5,juego6,juego7,juego8, nuevo_juego, juego_inicio,indexadmin ,listado_clientes,modificar_cliente,eliminar_cliente, register, login,nuevo_cliente
 
 urlpatterns = [
     path('', home,name="home" ),
@@ -23,4 +23,8 @@ urlpatterns = [
     path('modificar-cliente/<rut>/',modificar_cliente,name="modificar_cliente"),
     path('eliminar-cliente/<rut>/',eliminar_cliente,name="eliminar_cliente"),
 
+
+
+
+    path ('nuevo-cliente/',nuevo_cliente,name="nuevo_cliente"),
 ]
