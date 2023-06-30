@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Juego
 from .forms import JuegoForm
+from .forms import ContactoForm
 # Create your views here.
 
 def home(request):
@@ -48,4 +49,20 @@ def juego_inicio(request):
         'juegos': juegos
     }
     return render(request,'aplicacion/juego_inicio.html',data)
+
+def contacto(request):
+    data = {
+        'form': ContactoForm()
+    }
+    if request.method == 'POST':
+        formulario = ContactoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "contacto enviado"
+        else:
+            data["form"] = formulario
+    return render(request,'aplicacion/contacto.html',data)
+
+def indexadmin(request):
+    return render(request,'aplicacion/indexadmin.html')
 
