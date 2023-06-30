@@ -6,3 +6,4 @@ migrations/
 aplicacion/migrations/*.py
 migrations/*.py
 *.pyc
+db.sqlite3
