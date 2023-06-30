@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Juego
 from .forms import JuegoForm
+from .forms import CustomUserForm
 # Create your views here.
 
 def home(request):
@@ -35,6 +36,15 @@ def juego7(request):
 
 def juego8(request):
     return render(request,'aplicacion/juego8.html')
+
+def register(request):
+    data = {
+        'form' : CustomUserForm()
+    }
+    return render(request,'registration/register.html',data)
+
+def login(request):
+    return render(request,'aplicacion/login.html')
 
 def nuevo_juego(request):
     data = {

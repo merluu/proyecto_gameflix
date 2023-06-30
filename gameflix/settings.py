@@ -55,7 +55,7 @@ ROOT_URLCONF = 'gameflix.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "aplicacion",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +67,10 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL ="home"
 
 WSGI_APPLICATION = 'gameflix.wsgi.application'
 
@@ -104,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'es-cl'
 #para que este en español el pandel del admin
 
 TIME_ZONE = 'UTC'

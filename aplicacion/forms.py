@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Juego
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class JuegoForm(ModelForm):
     id = forms.CharField(widget=forms.TextInput)
@@ -15,15 +17,18 @@ class JuegoForm(ModelForm):
 
     def val_nombre(self):
         nombre = self.cleaned_data.get('nombre')
-        if len(nombre)<4:
+        if len(nombre) < 4:
             raise forms.ValidationError("El nombre debe tener al menos 4 caracteres")
         return nombre
     
-
     def va_precio(self):
-        precio =self.cleaned_data.get('precio')
-        if precio<=0:
+        precio = self.cleaned_data.get('precio')
+        if precio <= 0:
             raise forms.ValidationError("El precio tiene que ser mayor que 0")
         return precio
+
+class CustomUserForm(UserCreationForm):
     
-    
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
